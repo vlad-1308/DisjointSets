@@ -3,27 +3,13 @@ package com.krasnik.Entities;
 import java.util.*;
 
 public class Group {
-    private boolean wasMerged = false;
     
-    private List<Line> lines;
+    private Set<Line> lines;
     private Set<Field> uniqFields;
     
     public Group() {
-        lines = new LinkedList<Line>();
-        uniqFields = new HashSet<Field>();
-    }
-    
-    public boolean hasMatch(Line line) {
-        if (line != null) {
-            for (Field field : line.getFields()) {
-                if (uniqFields.contains(field)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return false;
+        lines = new HashSet<>();
+        uniqFields = new HashSet<>();
     }
     
     public Group addLine(Line line) {
@@ -42,17 +28,10 @@ public class Group {
         if (group != null) {
             this.lines.addAll(group.getLines());
             this.uniqFields.addAll(group.getUniqFields());
-            group.clearData();
         }
     }
-    
-    private void clearData() {
-        this.lines = null;
-        this.uniqFields = null;
-        this.wasMerged = true;
-    }
-    
-    public List<Line> getLines() {
+
+    public Set<Line> getLines() {
         return lines;
     }
     

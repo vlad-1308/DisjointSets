@@ -5,15 +5,8 @@ import java.util.*;
 public class Line {
     
     private final List<Field> fields = new ArrayList<Field>();
-    
-    public Line(List<Field> fields) {
-        if (fields != null) {
-            this.fields.addAll(fields);
-        }
-    }
-    
-    public Line() {
 
+    public Line() {
     }
     
     public void addField(Field field) {
@@ -37,6 +30,14 @@ public class Line {
     
     public List<Field> getFields() {
         return fields;
+    }
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        for (Field field : fields) {
+            str.append("\"").append(field.getItem()).append("\"").append("; ");
+        }
+        return str.toString();
     }
     
 }

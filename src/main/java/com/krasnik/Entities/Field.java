@@ -1,6 +1,8 @@
 package com.krasnik.Entities;
 
-public class Field {
+import java.util.Objects;
+
+public class Field implements Comparable<Field> {
     private final String item;
     private final int position;
     
@@ -18,21 +20,26 @@ public class Field {
         }
         Field field = (Field) obj;
         return field.getPosition() == this.position 
-                        && (field.getItem() == this.item 
+                        && (Objects.equals(field.getItem(), this.item)
                             || (field.getItem() != null && field.getItem().equals(this.item)));
     } 
     
     public int hashCode() {
-        int res = 31 * position;
-        res *= 31 * ((item == null) ? 0 : item.hashCode());
+        int res = 27 * position;
+        res *= 27 * ((item == null) ? 0 : item.hashCode());
         return res;
     }
-    
+
     public String getItem() {
         return item;
     }
     
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(Field o) {
+        return this.position - o.getPosition();
     }
 }
