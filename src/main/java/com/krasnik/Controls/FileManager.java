@@ -46,7 +46,7 @@ public class FileManager {
                 int position = 1;
                 StringBuilder sb = new StringBuilder();
                 for (char c : arLine) {
-                    if (c != delimeter && (c != '\"') && c != '\n' && c != ' ') {
+                    if (c != delimeter && (c != '\"') && c != '\n' && c != ' ' && c != ',') {
                         sb.append(c);
                     } else {
                         if (sb.length() != 0 || !sb.toString().equals("")) {
@@ -61,7 +61,7 @@ public class FileManager {
                             line.addField(field);
                         }
                         sb.setLength(0);
-                        if (c == delimeter) {
+                        if (c == delimeter || c == ',') {
                             position++;
                         }
                     }
