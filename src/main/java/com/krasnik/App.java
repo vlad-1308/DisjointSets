@@ -14,7 +14,7 @@ public class App
     {
         long time = System.currentTimeMillis();
 
-        FileManager fileManager = new FileManager("src/main/resources/", "lng.txt");
+        FileManager fileManager = new FileManager("src/main/resources/", "lng-big.csv");
         GroupManager manager = fileManager.getFieldsFromList();
         fileManager.createResultFile(manager);
         System.out.println(manager.getCountFillGroup() + " групп с 2 и более строками.");
